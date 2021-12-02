@@ -26,7 +26,6 @@
 // },
 
 import chroma from "chroma-js";
-
 const levels = [50, 100, 200, 300, 400, 500, 600, 700, 800, 900];
 
 function generatePalette(starterPalette) {
@@ -49,7 +48,7 @@ function generatePalette(starterPalette) {
                 rgb: chroma(scale[i]).css(),
                 rgba: chroma(scale[i])
                     .css()
-                    .replace('rgba', 'rgba')
+                    .replace('rgb', 'rgba')
                     .replace(')', ', 1.0)')
             });
         }
