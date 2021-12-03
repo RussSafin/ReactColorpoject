@@ -28,7 +28,7 @@ class Palette extends Component {
 				key={color.id} 
 				id={color.id}
 				paletteId={id}
-				showLink={true}
+				showingFullPalette={true}
 			/>
 		));
 		return (
@@ -40,10 +40,7 @@ class Palette extends Component {
 					isAllColors={true}
 				/>
 				<div className="Palette-colors">{colorBoxes}</div>
-				<footer className="Palette-footer">
-					{paletteName}
-					<span className="emoji">{emoji}</span>
-				</footer>
+				<PaletteFooter paletteName={paletteName} emoji={emoji} />
 			</div>
 		);
 	}

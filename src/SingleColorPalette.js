@@ -3,7 +3,7 @@ import {Link} from 'react-router-dom';
 import Navbar from './Navbar';
 import ColorBox from './ColorBox';
 import PaletteFooter from './PaletteFooter';
-import { palette } from '@mui/system';
+
 
 export default class SingleColorPalette extends Component {
 	constructor(props) {
@@ -34,7 +34,7 @@ export default class SingleColorPalette extends Component {
 				key={color.name}
 				name={color.name}
 				background={color[format]}
-				showLink={false}
+				showingFullPalette={false}
 			/>
 		));
 		return (
