@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-import {Link} from "react-router-dom";
+import { Link } from 'react-router-dom';
 import Select from '@mui/material/Select';
 import MenuItem from '@mui/material/MenuItem';
 import Snackbar from '@mui/material/Snackbar';
@@ -18,42 +18,44 @@ class Navbar extends Component {
 		this.closeSnackbar = this.closeSnackbar.bind(this);
 	}
 	handleFormatChange(e) {
-		this.setState({ format: e.target.value , open: true});
+		this.setState({ format: e.target.value, open: true });
 		this.props.handleChange(e.target.value);
 	}
 	closeSnackbar() {
 		this.setState({ open: false });
 	}
 	render() {
-		const { level, changeLevel } = this.props;
+		const { level, changeLevel, isAllColors } = this.props;
 		const { format } = this.state;
 		return (
 			<header className="Navbar">
 				<div className="logo">
-					<Link to='/'>reactcolorselect</Link>
+					<Link to="/">reactcolorselect</Link>
 				</div>
-				<div className="slider-container">
-					<span>Level: {level}</span>
-					<div className="slider">
-						<Slider
-							defaultValue={level}
-							min={100}
-							max={900}
-							step={100}
-							onAfterChange={changeLevel}
-							//     trackStyle={{backgroundColor: 'transparent'}}
-							//     handleStyle={{
-							//         border: '2px solid green',
-							//         height: '13px',
-							//         width: '13px',
-							//         marginTop: '-3px',
-							//         backgroundColor: 'green',
-							//         boxShadow: 'none',
-							//     }}
-							//     railStyle={{height: '8px'}}
-						/>
+				{isAllColors && (
+					<div className="slider-container">
+						<span>Level: {level}</span>
+						<div className="slider">
+							<Slider
+								defaultValue={level}
+								min={100}
+								max={900}
+								step={100}
+								onAfterChange={changeLevel}
+								//     trackStyle={{backgroundColor: 'transparent'}}
+								//     handleStyle={{
+								//         border: '2px solid green',
+								//         height: '13px',
+								//         width: '13px',
+								//         marginTop: '-3px',
+								//         backgroundColor: 'green',
+								//         boxShadow: 'none',
+								//     }}
+								//     railStyle={{height: '8px'}}
+							/>
+						</div>
 					</div>
-				</div>
+				)}
 				<div className="select-container">
 					<Select value={format} onChange={this.handleFormatChange}>
 						<MenuItem value="hex">HEX - #ffffff</MenuItem>
@@ -61,7 +63,7 @@ class Navbar extends Component {
 						<MenuItem value="rgba">RGBA - #(255, 255, 255, 1.0)</MenuItem>
 					</Select>
 				</div>
-				<Snackbar 
+				<Snackbar
 					anchorOrigin={{ vertical: 'bottom', horizontal: 'left' }}
 					open={this.state.open}
 					autoHideDuration={3000}
@@ -73,7 +75,7 @@ class Navbar extends Component {
 					ContentProps={{
 						'aria-describedby': 'message-id',
 					}}
-                    onClose={this.closeSnackbar}
+					onClose={this.closeSnackbar}
 					action={[
 						<IconButton
 							onClick={this.closeSnackbar}
