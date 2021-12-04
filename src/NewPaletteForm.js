@@ -1,16 +1,17 @@
-import React from 'react';
-import { styled, /*useTheme*/ } from '@mui/material/styles';
+import React, { useState } from 'react';
+import { styled /*useTheme*/ } from '@mui/material/styles';
 import Box from '@mui/material/Box';
 import Drawer from '@mui/material/Drawer';
 import CssBaseline from '@mui/material/CssBaseline';
 import MuiAppBar from '@mui/material/AppBar';
 import Toolbar from '@mui/material/Toolbar';
-// import List from '@mui/material/List';
 import Typography from '@mui/material/Typography';
 import Divider from '@mui/material/Divider';
 import IconButton from '@mui/material/IconButton';
 import MenuIcon from '@mui/icons-material/Menu';
 import ChevronLeftIcon from '@mui/icons-material/ChevronLeft';
+import Button from '@mui/material/Button';
+import { ChromePicker } from 'react-color';
 // import ChevronRightIcon from '@mui/icons-material/ChevronRight';
 // import ListItem from '@mui/material/ListItem';
 // import ListItemIcon from '@mui/material/ListItemIcon';
@@ -18,7 +19,7 @@ import ChevronLeftIcon from '@mui/icons-material/ChevronLeft';
 // import InboxIcon from '@mui/icons-material/MoveToInbox';
 // import MailIcon from '@mui/icons-material/Mail';
 
-const drawerWidth = 240;
+const drawerWidth = 400;
 
 const Main = styled('main', { shouldForwardProp: (prop) => prop !== 'open' })(
 	({ theme, open }) => ({
@@ -77,6 +78,11 @@ export default function NewPaletteForm() {
 		setOpen(false);
 	};
 
+	const [color, setColor] = useState('purple');
+	const changeColor = (newColor) => {
+		setColor(newColor.hex);
+	};
+
 	return (
 		<Box sx={{ display: 'flex' }}>
 			<CssBaseline />
@@ -111,10 +117,24 @@ export default function NewPaletteForm() {
 			>
 				<DrawerHeader>
 					<IconButton onClick={handleDrawerClose}>
-							<ChevronLeftIcon />
+						<ChevronLeftIcon />
 					</IconButton>
 				</DrawerHeader>
-				<Divider />				
+				<Divider />
+				<Typography variant="h4">Design Your Palette</Typography>
+                <div>
+				<Button variant="contained" color="error">
+					Clear Palette
+				</Button>
+                <Button variant="contained" color="primary">
+					Random Color
+				</Button>
+                </div>
+				<ChromePicker
+					color={color}
+					onChange={(newColor) => changeColor(newColor)}
+				/>
+                <Button variant="contained" color="primary">ADD BUTTON</Button>
 			</Drawer>
 			<Main open={open}>
 				<DrawerHeader />
