@@ -1,11 +1,10 @@
 import React, { Component } from 'react';
 import { Link } from 'react-router-dom';
 import Navbar from './Navbar';
-import ColorBox from './ColorBox';
 import PaletteFooter from './PaletteFooter';
 import styles from './styles/PaletteStyles';
-import { withStyles } from '@mui/styles';
-
+import { withStyles } from '@material-ui/styles';
+import ColorBox from './ColorBox';
 
 class SingleColorPalette extends Component {
 	constructor(props) {
@@ -17,21 +16,21 @@ class SingleColorPalette extends Component {
 	gatherShades(palette, colorToFilterBy) {
 		let shades = [];
 		let allColors = palette.colors;
+
 		for (let key in allColors) {
 			shades = shades.concat(
 				allColors[key].filter((color) => color.id === colorToFilterBy)
 			);
 		}
-
 		return shades.slice(1);
 	}
 	changeFormat(val) {
 		this.setState({ format: val });
 	}
 	render() {
-        const {classes} = this.props;
-		const { paletteName, emoji, id } = this.props.palette;
 		const { format } = this.state;
+		const { paletteName, emoji, id } = this.props.palette;
+		const { classes } = this.props;
 		const colorBoxes = this._shades.map((color) => (
 			<ColorBox
 				key={color.name}
@@ -42,13 +41,11 @@ class SingleColorPalette extends Component {
 		));
 		return (
 			<div className={classes.Palette}>
-				<Navbar handleChange={this.changeFormat} isAllColors={false} />
-				<div className={classes.Colors}>
+				<Navbar handleChange={this.changeFormat} showingAllColors={false} />
+				<div className={classes.colors}>
 					{colorBoxes}
 					<div className={classes.goBack}>
-						<Link to={`/palette/${id}`}>
-							GO BACK
-						</Link>
+						<Link to={`/palette/${id}`}>GO BACK</Link>
 					</div>
 				</div>
 				<PaletteFooter paletteName={paletteName} emoji={emoji} />
@@ -56,5 +53,4 @@ class SingleColorPalette extends Component {
 		);
 	}
 }
-
 export default withStyles(styles)(SingleColorPalette);

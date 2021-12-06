@@ -1,6 +1,6 @@
 import React from 'react';
+import { withStyles } from '@material-ui/styles';
 import styles from './styles/MiniPaletteStyles';
-import { withStyles } from '@mui/styles';
 
 function MiniPalette(props) {
 	const { classes, paletteName, emoji, colors } = props;
@@ -8,7 +8,7 @@ function MiniPalette(props) {
 		<div
 			className={classes.miniColor}
 			style={{ backgroundColor: color.color }}
-            key={color.name}
+			key={color.name}
 		/>
 	));
 

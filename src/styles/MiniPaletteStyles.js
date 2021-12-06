@@ -12,16 +12,16 @@ export default {
 	},
 	colors: {
 		backgroundColor: '#dae1e4',
-        height: '150px',
-        width: '100%',
-        borderRadius: '5px',
-        overflow: 'hidden'
+		height: '150px',
+		width: '100%',
+		borderRadius: '5px',
+		overflow: 'hidden',
 	},
 	title: {
 		display: 'flex',
 		justifyContent: 'space-between',
 		alignItems: 'center',
-		margin: '0',
+		margin: '0.5rem 0',
 		color: 'black',
 		paddingBottom: '1rem',
 		fontSize: '1rem',
@@ -31,12 +31,12 @@ export default {
 		marginLeft: '0.5rem',
 		fontSize: '1.5rem',
 	},
-    miniColor: {
-        height: '25%',
-        width: '20%',
-        display: 'inline-block',
-        margin: '0',
-        position: 'relative',
-        marginBottom: '-3.5px'
-    }
+	miniColor: {
+		height: '25%',
+		width: '20%',
+		display: 'inline-block',
+		margin: '0 auto',
+		position: 'relative',
+		marginBottom: '-3.5px',
+	},
 };

@@ -1,10 +1,9 @@
-
 export default {
 	Navbar: {
 		display: 'flex',
 		alignItems: 'center',
 		justifyContent: 'flex-start',
-		height: '6vh'
+		height: '6vh',
 	},
 	logo: {
 		marginRight: '15px',
@@ -17,31 +16,32 @@ export default {
 		alignItems: 'center',
 		'& a': {
 			textDecoration: 'none',
-			color: 'black'
-		}, 
-	},	
+			color: 'black',
+		},
+	},
 	slider: {
 		width: '340px',
 		margin: '0 10px',
 		display: 'inline-block',
-		'& .rc-slider-rail': {
-			height: '8px'
-		},
-		'& .rc-slider-handle, .rc-slider-handle:active, .rc-slider-handle:focus, .rc-slider-handle:hover': {
-			backgroundColor: 'green',
-			outline: 'none',
-			border: '2px solid green',
-			boxShadow: 'none',
-			width: '12px',
-			height: '12px',
-			marginTop: '-2px',
-		},
 		'& .rc-slider-track': {
 			backgroundColor: 'transparent',
-		}
+		},
+		'& .rc-slider-rail': {
+			height: '8px',
+		},
+		'& .rc-slider-handle, .rc-slider-handle:active, .rc-slider-handle:focus,.rc-slider-handle:hover':
+			{
+				backgroundColor: 'green',
+				outline: 'none',
+				border: '2px solid green',
+				boxShadow: 'none',
+				width: '13px',
+				height: '13px',
+				marginTop: '-3px',
+			},
 	},
-	SelectContainer: {
-			marginLeft: 'auto',
-			marginRight: '1rem',
-		}
-}
+	selectContainer: {
+		marginLeft: 'auto',
+		marginRight: '1rem',
+	},
+};

@@ -1,15 +1,15 @@
 import React, { Component } from 'react';
 import { Link } from 'react-router-dom';
-import Select from '@mui/material/Select';
-import MenuItem from '@mui/material/MenuItem';
-import Snackbar from '@mui/material/Snackbar';
-import IconButton from '@mui/material/IconButton';
-import CloseIcon from '@mui/icons-material/Close';
-import { withStyles } from '@mui/styles';
-import styles from './styles/NavbarStyles';
+import { withStyles } from '@material-ui/styles';
+import Select from '@material-ui/core/Select';
+import MenuItem from '@material-ui/core/MenuItem';
+import Snackbar from '@material-ui/core/Snackbar';
+import IconButton from '@material-ui/core/IconButton';
+import CloseIcon from '@material-ui/icons/Close';
 import Slider from 'rc-slider';
-import 'rc-slider/assets/index.css';
 
+import 'rc-slider/assets/index.css';
+import styles from './styles/NavbarStyles';
 
 class Navbar extends Component {
 	constructor(props) {
@@ -26,14 +26,14 @@ class Navbar extends Component {
 		this.setState({ open: false });
 	}
 	render() {
-		const { level, changeLevel, isAllColors, classes } = this.props;
+		const { level, changeLevel, showingAllColors, classes } = this.props;
 		const { format } = this.state;
 		return (
 			<header className={classes.Navbar}>
 				<div className={classes.logo}>
-					<Link to="/">reactcolorselect</Link>
+					<Link to="/">reactcolorpicker</Link>
 				</div>
-				{isAllColors && (
+				{showingAllColors && (
 					<div>
 						<span>Level: {level}</span>
 						<div className={classes.slider}>
@@ -43,25 +43,15 @@ class Navbar extends Component {
 								max={900}
 								step={100}
 								onAfterChange={changeLevel}
-								//     trackStyle={{backgroundColor: 'transparent'}}
-								//     handleStyle={{
-								//         border: '2px solid green',
-								//         height: '13px',
-								//         width: '13px',
-								//         marginTop: '-3px',
-								//         backgroundColor: 'green',
-								//         boxShadow: 'none',
-								//     }}
-								//     railStyle={{height: '8px'}}
 							/>
 						</div>
 					</div>
 				)}
-				<div className={classes.SelectContainer}>
+				<div className={classes.selectContainer}>
 					<Select value={format} onChange={this.handleFormatChange}>
 						<MenuItem value="hex">HEX - #ffffff</MenuItem>
-						<MenuItem value="rgb">RGB - #rgb(255,255,255)</MenuItem>
-						<MenuItem value="rgba">RGBA - #(255, 255, 255, 1.0)</MenuItem>
+						<MenuItem value="rgb">RGB - rgb(255,255,255)</MenuItem>
+						<MenuItem value="rgba">RGBA - rgba(255,255,255, 1.0)</MenuItem>
 					</Select>
 				</div>
 				<Snackbar
@@ -70,7 +60,7 @@ class Navbar extends Component {
 					autoHideDuration={3000}
 					message={
 						<span id="message-id">
-							Format Changed To {format.toUpperCase()}!
+							Format Changed To {format.toUpperCase()}
 						</span>
 					}
 					ContentProps={{
@@ -92,5 +82,4 @@ class Navbar extends Component {
 		);
 	}
 }
-
 export default withStyles(styles)(Navbar);
